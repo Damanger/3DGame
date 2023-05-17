@@ -1,15 +1,16 @@
 body {
     overflow-y: hidden;
     overflow-x: hidden;
-    color: #ffffff;
+    color: white;
     background-color:#1bafdb;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
 }
 
 #buttonContainer {
   align-items: center;
   justify-content: center;
   position: relative;
-  left: 48%;
+  left: 45%;
   top: 25rem;
 }
 
@@ -18,23 +19,22 @@ body {
     transform: scale(1); /* Escala inicial del botón */
   }
   50% {
-    transform: scale(0.9); /* Escala durante la mitad de la animación */
+    transform: scale(0.75); /* Escala durante la mitad de la animación */
   }
   100% {
     transform: scale(1); /* Escala final del botón */
   }
 }
 
-#startButton {
+#startButton, #instructions {
   box-shadow: 2px 2px;
 }
 
-#startButton:hover {
+#startButton:hover, #instructions:hover {
   cursor: pointer;
 }
 
-#startButton:active {
-  /* Estilos al hacer clic en el botón */
+#startButton:active, #instructions:active {
   animation: clickEffect 0.3s;
 }
 
