@@ -1,0 +1,11 @@
+Model Information:
+* title:	Rusty Stop Sign
+* source:	https://sketchfab.com/3d-models/rusty-stop-sign-2225bb40891b4ed083a75bd17e447dd0
+* author:	Anthony Yanez (https://sketchfab.com/paulyanez)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Rusty Stop Sign" (https://sketchfab.com/3d-models/rusty-stop-sign-2225bb40891b4ed083a75bd17e447dd0) by Anthony Yanez (https://sketchfab.com/paulyanez) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

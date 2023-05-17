@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sponge-bob-patrick-starfish
+* source:	https://sketchfab.com/3d-models/sponge-bob-patrick-starfish-7b2355a08df24eabb28ed953e72239f1
+* author:	kjax (https://sketchfab.com/kjax)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sponge-bob-patrick-starfish" (https://sketchfab.com/3d-models/sponge-bob-patrick-starfish-7b2355a08df24eabb28ed953e72239f1) by kjax (https://sketchfab.com/kjax) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

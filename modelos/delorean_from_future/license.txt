@@ -1,0 +1,11 @@
+Model Information:
+* title:	DeLorean From Future
+* source:	https://sketchfab.com/3d-models/delorean-from-future-6033dd3257444c61aabdee5ea23054b4
+* author:	stas.kenin (https://sketchfab.com/stas.kenin)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "DeLorean From Future" (https://sketchfab.com/3d-models/delorean-from-future-6033dd3257444c61aabdee5ea23054b4) by stas.kenin (https://sketchfab.com/stas.kenin) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
