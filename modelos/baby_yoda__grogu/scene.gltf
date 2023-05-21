@@ -1,0 +1,448 @@
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        3.152416706085205,
+        -1.0886625051498413,
+        1.693642258644104
+      ],
+      "min": [
+        -3.1369106769561768,
+        -5.640854835510254,
+        -2.659241199493408
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 786384,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.9999986290931702,
+        0.9999961853027344,
+        0.9999935030937195
+      ],
+      "min": [
+        -0.9999994039535522,
+        -0.9999701380729675,
+        -0.9999579191207886
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.9686274528503418,
+        0.9725490212440491,
+        0.8549019694328308,
+        1.0
+      ],
+      "min": [
+        0.7490196228027344,
+        0.5686274766921997,
+        0.11764705926179886,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 349824,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1572768,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        2.322687864303589,
+        1.4755936861038208,
+        1.6998014450073242
+      ],
+      "min": [
+        -3.9627976417541504,
+        -5.755572319030762,
+        -2.659241199493408
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 2359152,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.9999882578849792,
+        0.9999942183494568,
+        0.9999991655349731
+      ],
+      "min": [
+        -0.9999820590019226,
+        -0.9999977350234985,
+        -0.9999865889549255
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1048512,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.9960784316062927,
+        1.0,
+        0.9960784316062927,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 1399296,
+      "componentType": 5125,
+      "count": 339681,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 3145536,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        4.157397270202637,
+        1.4756373167037964,
+        1.6545180082321167
+      ],
+      "min": [
+        -4.157397270202637,
+        -2.235038995742798,
+        -2.120900869369507
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 3931920,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        1.0,
+        0.9999642372131348,
+        1.0
+      ],
+      "min": [
+        -0.9999999403953552,
+        -0.9999998807907104,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 2097024,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        1.0,
+        1.0,
+        0.9960784316062927,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 2758020,
+      "componentType": 5125,
+      "count": 347064,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 4718304,
+      "componentType": 5126,
+      "count": 32927,
+      "max": [
+        2.404892683029175,
+        -0.3027127981185913,
+        1.6956663131713867
+      ],
+      "min": [
+        -2.3578085899353027,
+        -5.71132230758667,
+        -2.631385564804077
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 5113428,
+      "componentType": 5126,
+      "count": 32927,
+      "max": [
+        0.9997914433479309,
+        0.9999527931213379,
+        0.9999295473098755
+      ],
+      "min": [
+        -0.999967098236084,
+        -0.9999874830245972,
+        -0.9999732375144958
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 3145536,
+      "componentType": 5126,
+      "count": 32927,
+      "max": [
+        0.9686274528503418,
+        0.843137264251709,
+        0.6666666865348816,
+        1.0
+      ],
+      "min": [
+        0.7254902124404907,
+        0.572549045085907,
+        0.3529411852359772,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 4146276,
+      "componentType": 5125,
+      "count": 184689,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Laura.Clarke (https://sketchfab.com/Laura.Clarke)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/baby-yoda-grogu-fa606b8f177c408c999531c548fa3443",
+      "title": "Baby Yoda / Grogu"
+    },
+    "generator": "Sketchfab-12.68.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 4885032,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 5508552,
+      "byteOffset": 4885032,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 3672368,
+      "byteOffset": 10393584,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 14065952,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "RETOPYODA",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5,
+          0.5,
+          0.5,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "RETOPYODA_RETOPYODA_0",
+      "primitives": [
+        {
+          "attributes": {
+            "COLOR_0": 2,
+            "NORMAL": 1,
+            "POSITION": 0
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RETOPYODA_RETOPYODA_0",
+      "primitives": [
+        {
+          "attributes": {
+            "COLOR_0": 6,
+            "NORMAL": 5,
+            "POSITION": 4
+          },
+          "indices": 7,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RETOPYODA_RETOPYODA_0",
+      "primitives": [
+        {
+          "attributes": {
+            "COLOR_0": 10,
+            "NORMAL": 9,
+            "POSITION": 8
+          },
+          "indices": 11,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RETOPYODA_RETOPYODA_0",
+      "primitives": [
+        {
+          "attributes": {
+            "COLOR_0": 14,
+            "NORMAL": 13,
+            "POSITION": 12
+          },
+          "indices": 15,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "RETOPYODA.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "name": "RETOPYODA"
+    },
+    {
+      "mesh": 0,
+      "name": "RETOPYODA_RETOPYODA_0"
+    },
+    {
+      "mesh": 1,
+      "name": "RETOPYODA_RETOPYODA_0"
+    },
+    {
+      "mesh": 2,
+      "name": "RETOPYODA_RETOPYODA_0"
+    },
+    {
+      "mesh": 3,
+      "name": "RETOPYODA_RETOPYODA_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
