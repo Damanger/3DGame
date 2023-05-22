@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dog
+* source:	https://sketchfab.com/3d-models/dog-c1d790c39dcf4ba2a9a47b4c0dc8836b
+* author:	HeyNinety (https://sketchfab.com/HeyNinety)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dog" (https://sketchfab.com/3d-models/dog-c1d790c39dcf4ba2a9a47b4c0dc8836b) by HeyNinety (https://sketchfab.com/HeyNinety) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
