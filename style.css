@@ -4,6 +4,7 @@ body {
     color: white;
     background-image: url('./images/background.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
     font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
 }
 
@@ -46,4 +47,22 @@ body {
   color: white;
   font-size: 20px;
   display: none;
+}
+
+.texto-rojo {
+  color: #ff0000; /* Color rojo */
+  transition: color 0.5s; /* Transición de color durante 0.5 segundos */
+  font-size: 30px;
+}
+
+.texto-verde {
+  color: #00ff00; /* Color verde */
+  transition: color 0.5s; /* Transición de color durante 0.5 segundos */
+  font-size: 30px;
+}
+
+.texto-amarillo {
+  color: #ffff00; /* Color amarillo */
+  transition: color 0.5s; /* Transición de color durante 0.5 segundos */
+  font-size: 30px;
 }
