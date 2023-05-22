@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 
 const startButton = document.getElementById('startButton');
 startButton.addEventListener('click', startGame);
@@ -10,10 +9,12 @@ instructionsButton.addEventListener('click', showInstructions);
 const scoreContainer = document.getElementById('container');
 const canvas = document.getElementById('miCanvas');
 const cuchao = new Audio('./modelos/cuchao.mp3');
+const crash = new Audio('./modelos/Crash.mp3');
+const money = new Audio('./modelos/moneda.mp3');
+const win = new Audio('./modelos/win.mp3');
 
 //Empieza el juego
 function startGame() {
-
     startButton.removeEventListener('click', startGame);
     startButton.style.display = 'none';
     instructionsButton.style.display = 'none';
@@ -24,12 +25,16 @@ function startGame() {
     let vidas = 3;
     let monedas = 0;
     let totalMonedas = 0;
+    let deloreanModel, mcqueenModel;
+    let currentModel = mcqueenModel;
+    let currentPosition = new THREE.Vector3();
     const objectsToRemove = [];
     const coins = [];
     const grogus = [];
     const pats = [];
     const oxid = [];
     const bloq = [];
+    const dogs = [];
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     const scene = new THREE.Scene();
@@ -72,11 +77,12 @@ function startGame() {
         });
     }
 
-    let patricioModel, coinModel, groguModel;
+    let patricioModel, coinModel, groguModel, dogModel;
 
     async function loadModels() {
         const loader = new GLTFLoader();
         const coinModelPromise = loadModel(loader, './modelos/bitcoin/scene.gltf');
+        const dogModelPromise = loadModel(loader, './modelos/dog/scene.gltf')
         const groguModelPromise = loadModel(loader, './modelos/baby_yoda__grogu/scene.gltf');
         const patricioModelPromise = loadModel(loader, './modelos/sponge-bob-patrick-starfish/scene.gltf');
         const oxidadoModelPromise = loadModel(loader, './modelos/ruined_cars_small_freebie/scene.gltf');
@@ -86,26 +92,31 @@ function startGame() {
         [
             coinModel,
             groguModel,
-            patricioModel
+            patricioModel,
+            dogModel
         ] = await Promise.all([
             coinModelPromise,
             groguModelPromise,
-            patricioModelPromise
+            patricioModelPromise,
+            dogModelPromise
         ]);
 
         // Replicar los modelos
         if (coinModel) {
-            replicateModel(coinModel.scene, 1000, -500, 0.25, 110, coins, objectsToRemove);
+            replicateModel(coinModel.scene, 750, -300, 0.25, 110, coins, objectsToRemove);
         }
         if (groguModel) {
             replicateModel(groguModel.scene, 500, -1000, 3, 127, grogus, objectsToRemove);
+        }
+        if (dogModel) {
+            replicateModel(dogModel.scene, 500, -2000, 15, 122, dogs, objectsToRemove);
         }
         if (patricioModel) {
             replicateModel(patricioModel.scene, 500, -2500, 0.1, 112, pats, objectsToRemove);
         }
         if (oxidadoModelPromise) {
             const oxidadoModel = await oxidadoModelPromise;
-            replicateModel(oxidadoModel.scene, 500, -3000, 0.2, 110, oxid, objectsToRemove);
+            replicateModel(oxidadoModel.scene, 500, -3150, 0.2, 110, oxid, objectsToRemove);
         }
         if (bloqueoModelPromise) {
             const bloqueoModel = await bloqueoModelPromise;
@@ -126,6 +137,8 @@ function startGame() {
                 if (originalMesh === patricioModel.scene || originalMesh === coinModel.scene || originalMesh === groguModel.scene) {
                     mesh.rotation.y = Math.PI / 2;
                 }
+                if (originalMesh === dogModel.scene)
+                mesh.rotation.y = Math.PI;
 
                 scene.add(mesh);
                 collection.push(mesh);
@@ -160,7 +173,6 @@ function startGame() {
 
             //Agrega el modelo GLTF a la escena
             scene.add(mesh);
-            objectsToRemove.push(mesh);
         }
     });
 
@@ -187,63 +199,32 @@ function startGame() {
             mesh.position.z = -35;
             //Agrega el modelo GLTF a la escena
             scene.add(mesh);
-            objectsToRemove.push(mesh);
         }
     });
 
-    //Lamborghini
-    /*
-    //En la función de carga del objeto GLTF, asignar el objeto a la variable
-    const lambo = new GLTFLoader();
-    lambo.load('./modelos/free_lamborghini_revuelto/scene.gltf', (gltf) => {
-      //Accede al objeto de malla del modelo GLTF
-      const mesh = gltf.scene.children[0];
-      //Escala el objeto de malla
-      mesh.scale.set(30, 30, 30);
-      //Mueve el objeto de malla hacia arriba en la escena
-      mesh.position.y = 110;
-      //Gira el objeto de malla alrededor del eje Z
-      mesh.rotation.z = Math.PI / 2;
-      //Agrega el modelo GLTF a la escena
-      scene.add(gltf.scene);
-
-      //Asignar el objeto a la variable objectToFollow
-      objectToFollow = mesh;
-      document.addEventListener("keydown", (event) => {
-        if (event.code === "ArrowLeft" && (mesh.position.z > -130 && mesh.position.z < 120) && isPaused === false) {
-          mesh.position.z += 7;
-        } else if (event.code === "ArrowRight" && (mesh.position.z > -120 && mesh.position.z < 130) && isPaused === false) {
-          mesh.position.z -= 7;
-        }
-      });
-    });*/
-
     //delorean
-    /*
+    
     //En la función de carga del objeto GLTF, asignar el objeto a la variable
     const delorean = new GLTFLoader();
     delorean.load('./modelos/delorean_from_future/scene.gltf', (gltf) => {
-      //Accede al objeto de malla del modelo GLTF
-      const mesh = gltf.scene.children[0];
-      //Escala el objeto de malla
-      mesh.scale.set(0.2, 0.2, 0.2);
-      //Mueve el objeto de malla hacia arriba en la escena
-      mesh.position.y = 100;
-      //Gira el objeto de malla alrededor del eje Z
-      mesh.rotation.z = Math.PI;
-      //Agrega el modelo GLTF a la escena
-      scene.add(gltf.scene);
+        deloreanModel = gltf.scene.children[0];
+        deloreanModel.scale.set(0.2, 0.2, 0.2);
+        deloreanModel.position.y = 100;
+        deloreanModel.rotation.z = Math.PI;
+        deloreanModel.visible = false;
+        //Agrega el modelo GLTF a la escena
+        scene.add(gltf.scene);
 
-      //Asignar el objeto a la variable objectToFollow
-      objectToFollow = mesh;
-      document.addEventListener("keydown", (event) => {
-        if (event.code === "ArrowLeft" && (mesh.position.z > -130 && mesh.position.z < 120) && isPaused === false) {
-          mesh.position.z += 7;
-        } else if (event.code === "ArrowRight" && (mesh.position.z > -120 && mesh.position.z < 130) && isPaused === false) {
-          mesh.position.z -= 7;
-        }
-      });
-    });*/
+        //Asignar el objeto a la variable objectToFollow
+        objectToFollow = deloreanModel;
+        document.addEventListener("keydown", (event) => {
+            if ((event.code === "ArrowLeft" || event.key === "a") && (deloreanModel.position.z > -130 && deloreanModel.position.z < 120) && isPaused === false) {
+                deloreanModel.position.z += 7;
+            } else if ((event.code === "ArrowRight" || event.key === "d") && (deloreanModel.position.z > -120 && deloreanModel.position.z < 130) && isPaused === false) {
+                deloreanModel.position.z -= 7;
+            }
+        });
+    });
 
     //mcqueen
 
@@ -251,24 +232,24 @@ function startGame() {
     const mcqueen = new GLTFLoader();
     mcqueen.load('./modelos/lighting_mcqueen/scene.gltf', (gltf) => {
         //Accede al objeto de malla del modelo GLTF
-        const mesh = gltf.scene.children[0];
+        mcqueenModel= gltf.scene.children[0];
         //Escala el objeto de malla
-        mesh.scale.set(10, 10, 10);
+        mcqueenModel.scale.set(10, 10, 10);
         //Mueve el objeto de malla hacia arriba en la escena
-        mesh.position.y = 110;
+        mcqueenModel.position.y = 110;
         //Gira el objeto de malla alrededor del eje Z
-        mesh.rotation.z = Math.PI / 2 + Math.PI;
+        mcqueenModel.rotation.z = Math.PI / 2 + Math.PI;
         //Agrega el modelo GLTF a la escena
         scene.add(gltf.scene);
 
         //Asignar el objeto a la variable objectToFollow
-        objectToFollow = mesh;
+        objectToFollow = mcqueenModel;
 
         document.addEventListener("keydown", (event) => {
-            if ((event.code === "ArrowLeft" || event.key === "a") && (mesh.position.z > -130 && mesh.position.z < 120) && isPaused === false) {
-                mesh.position.z += 7;
-            } else if ((event.code === "ArrowRight" || event.key === "d") && (mesh.position.z > -120 && mesh.position.z < 130) && isPaused === false) {
-                mesh.position.z -= 7;
+            if ((event.code === "ArrowLeft" || event.key === "a") && (mcqueenModel.position.z > -130 && mcqueenModel.position.z < 120) && isPaused === false) {
+                mcqueenModel.position.z += 7;
+            } else if ((event.code === "ArrowRight" || event.key === "d") && (mcqueenModel.position.z > -120 && mcqueenModel.position.z < 130) && isPaused === false) {
+                mcqueenModel.position.z -= 7;
             }
         });
     });
@@ -311,13 +292,24 @@ function startGame() {
                 scene.remove(coin);
                 coins.splice(index, 1);
                 monedas++;
+                money.play();
                 if (monedas === 20){
                     vidas++;
+                    livesValue.textContent = vidas;
+                    livesValue.classList.add('texto-verde'); // Agregar clase 'texto-verde' al elemento de texto
+                    setTimeout(() => {
+                        livesValue.classList.remove('texto-verde'); // Eliminar clase 'texto-verde' después de 0.5 segundos
+                    }, 500);
                     monedas = 0;
                 }
                 totalMonedas++;
                 // Actualiza el valor de la variable monedas en el HTML
                 document.getElementById('coinsValue').textContent = totalMonedas;
+                coinsValue.textContent = monedas;
+                coinsValue.classList.add('texto-amarillo'); // Agregar clase 'texto-amarillo' al elemento de texto
+                setTimeout(() => {
+                    coinsValue.classList.remove('texto-amarillo'); // Eliminar clase 'texto-amarillo' después de 0.5 segundos
+                }, 500);
             }
         });
 
@@ -326,8 +318,15 @@ function startGame() {
             if (checkCollision(objectToFollow, grogu)) {
                 grogus.splice(index, 1);
                 vidas--;
+                if(vidas !=-1)
+                    cuchao.play();
                 // Actualiza el valor de la variable vidas en el HTML
                 document.getElementById('livesValue').textContent = vidas;
+                livesValue.textContent = vidas;
+                livesValue.classList.add('texto-rojo'); // Agregar clase 'texto-rojo' al elemento de texto
+                setTimeout(() => {
+                    livesValue.classList.remove('texto-rojo'); // Eliminar clase 'texto-rojo' después de 0.5 segundos
+                }, 500);
             }
         });
 
@@ -336,8 +335,15 @@ function startGame() {
             if (checkCollision(objectToFollow, pat)) {
                 pats.splice(index, 1);
                 vidas--;
+                if(vidas !=-1)
+                    cuchao.play();
                 // Actualiza el valor de la variable vidas en el HTML
                 document.getElementById('livesValue').textContent = vidas;
+                livesValue.textContent = vidas;
+                livesValue.classList.add('texto-rojo'); // Agregar clase 'texto-rojo' al elemento de texto
+                setTimeout(() => {
+                    livesValue.classList.remove('texto-rojo'); // Eliminar clase 'texto-rojo' después de 0.5 segundos
+                }, 500);
             }
         });
 
@@ -346,8 +352,15 @@ function startGame() {
             if (checkCollision(objectToFollow, ox)) {
                 oxid.splice(index, 1);
                 vidas--;
+                if(vidas !=-1)
+                    cuchao.play();
                 // Actualiza el valor de la variable vidas en el HTML
                 document.getElementById('livesValue').textContent = vidas;
+                livesValue.textContent = vidas;
+                livesValue.classList.add('texto-rojo'); // Agregar clase 'texto-rojo' al elemento de texto
+                setTimeout(() => {
+                    livesValue.classList.remove('texto-rojo'); // Eliminar clase 'texto-rojo' después de 0.5 segundos
+                }, 500);
             }
         });
 
@@ -356,13 +369,38 @@ function startGame() {
             if (checkCollision(objectToFollow, blo)) {
                 bloq.splice(index, 1);
                 vidas--;
+                if(vidas !=-1)
+                    cuchao.play();
                 // Actualiza el valor de la variable vidas en el HTML
                 document.getElementById('livesValue').textContent = vidas;
+                livesValue.textContent = vidas;
+                livesValue.classList.add('texto-rojo'); // Agregar clase 'texto-rojo' al elemento de texto
+                setTimeout(() => {
+                    livesValue.classList.remove('texto-rojo'); // Eliminar clase 'texto-rojo' después de 0.5 segundos
+                }, 500);
             }
         });
 
-        if (vidas === 0) {
-            cuchao.play();
+        //Colisiones Dogs
+        dogs.forEach((doggie, index) => {
+            if (checkCollision(objectToFollow, doggie)) {
+                dogs.splice(index, 1);
+                vidas--;
+                if(vidas !=-1)
+                    cuchao.play();
+                // Actualiza el valor de la variable vidas en el HTML
+                document.getElementById('livesValue').textContent = vidas;
+                livesValue.textContent = vidas;
+                livesValue.classList.add('texto-rojo'); // Agregar clase 'texto-rojo' al elemento de texto
+                setTimeout(() => {
+                    livesValue.classList.remove('texto-rojo'); // Eliminar clase 'texto-rojo' después de 0.5 segundos
+                }, 500);
+            }
+        });
+
+        if (vidas === -1) {
+            cuchao.pause();
+            crash.play();
             cancelAnimationFrame(animationFrameId); //Detiene el bucle de animación
             audio.pause(); // Pausa el audio
             showGameOver(); // Mostrar el texto "GAME OVER"
@@ -372,6 +410,7 @@ function startGame() {
         if (vidas === 7) {
             cancelAnimationFrame(animationFrameId);
             audio.pause();
+            win.play();
             showWinner();
             setTimeout(reloadPage, 4000);
         }
@@ -408,10 +447,32 @@ function startGame() {
         if (event.key === 'r') {
             resetGame();
         }
+        if (event.key === 'c') {
+            // Oculta el modelo actual
+            if (currentModel) {
+                currentPosition.copy(currentModel.position);
+                scene.remove(currentModel);
+                currentModel.visible = false;
+            }
+            // Cambia al siguiente modelo
+            if (currentModel === deloreanModel) {
+                currentModel = mcqueenModel;
+                objectToFollow = currentModel;
+            } else {
+                currentModel = deloreanModel;
+                objectToFollow = currentModel;
+            }
+            // Restaura la posición guardada del modelo anterior
+            currentModel.position.copy(currentPosition);
+            currentModel.position.y = 110;
+            // Hace visible el nuevo modelo
+            currentModel.visible = true;
+        }
     });
 
     function resetGame() {
         // Restablecer variables a sus valores iniciales
+        objectsToRemove.forEach(object => scene.remove(object));
         vidas = 3;
         monedas = 0;
         totalMonedas = 0;
@@ -421,26 +482,25 @@ function startGame() {
         pats.length = 0;
         oxid.length = 0;
         bloq.length = 0;
-
-        resetCarPosition();
-
-        // Eliminar objetos de la escena
-        scene.children.forEach((object) => {
-            if (object.type === "Mesh") {
-                scene.remove(object);
-            }
-        });
-
-        // Volver a cargar los modelos
-        loadModels();
+        dogs.length = 0;
 
         // Restablecer la posición y orientación de la cámara
         camera.position.set(5, 0, 0);
         camera.lookAt(new THREE.Vector3(0, 0, 0));
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Resetting...',
+            showConfirmButton: false,
+            timer: 1500
+        });
+        setTimeout(resetingGame, 2000);
+    }
 
-        // Reiniciar la animación
-        cancelAnimationFrame(animationFrameId);
-        animate();
+    function resetingGame(){
+        resetCarPosition();
+        // Volver a cargar los modelos
+        loadModels();
     }
 
     // Variable para almacenar la posición inicial del carro
@@ -496,7 +556,7 @@ function startGame() {
         document.body.appendChild(gameOverDiv);
     }
 
-    // Función para mostrar el texto "GAME OVER"
+    // Función para mostrar el texto "WINNER!"
     function showWinner() {
         const winnerDiv = document.createElement("div");
         winnerDiv.textContent = "WINNER!";
