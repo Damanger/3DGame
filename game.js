@@ -25,9 +25,7 @@ function startGame() {
     let vidas = 3;
     let monedas = 0;
     let totalMonedas = 0;
-    let deloreanModel, mcqueenModel;
-    let currentModel = mcqueenModel;
-    let currentPosition = new THREE.Vector3();
+    let mcqueenModel;
     const objectsToRemove = [];
     const coins = [];
     const grogus = [];
@@ -202,30 +200,6 @@ function startGame() {
         }
     });
 
-    //delorean
-    
-    //En la función de carga del objeto GLTF, asignar el objeto a la variable
-    const delorean = new GLTFLoader();
-    delorean.load('./modelos/delorean_from_future/scene.gltf', (gltf) => {
-        deloreanModel = gltf.scene.children[0];
-        deloreanModel.scale.set(0.2, 0.2, 0.2);
-        deloreanModel.position.y = 100;
-        deloreanModel.rotation.z = Math.PI;
-        deloreanModel.visible = false;
-        //Agrega el modelo GLTF a la escena
-        scene.add(gltf.scene);
-
-        //Asignar el objeto a la variable objectToFollow
-        objectToFollow = deloreanModel;
-        document.addEventListener("keydown", (event) => {
-            if ((event.code === "ArrowLeft" || event.key === "a") && (deloreanModel.position.z > -130 && deloreanModel.position.z < 120) && isPaused === false) {
-                deloreanModel.position.z += 7;
-            } else if ((event.code === "ArrowRight" || event.key === "d") && (deloreanModel.position.z > -120 && deloreanModel.position.z < 130) && isPaused === false) {
-                deloreanModel.position.z -= 7;
-            }
-        });
-    });
-
     //mcqueen
 
     //En la función de carga del objeto GLTF, asignar el objeto a la variable
@@ -247,9 +221,9 @@ function startGame() {
 
         document.addEventListener("keydown", (event) => {
             if ((event.code === "ArrowLeft" || event.key === "a") && (mcqueenModel.position.z > -130 && mcqueenModel.position.z < 120) && isPaused === false) {
-                mcqueenModel.position.z += 7;
+                mcqueenModel.position.z += 10;
             } else if ((event.code === "ArrowRight" || event.key === "d") && (mcqueenModel.position.z > -120 && mcqueenModel.position.z < 130) && isPaused === false) {
-                mcqueenModel.position.z -= 7;
+                mcqueenModel.position.z -= 10;
             }
         });
     });
@@ -446,27 +420,6 @@ function startGame() {
         }
         if (event.key === 'r') {
             resetGame();
-        }
-        if (event.key === 'c') {
-            // Oculta el modelo actual
-            if (currentModel) {
-                currentPosition.copy(currentModel.position);
-                scene.remove(currentModel);
-                currentModel.visible = false;
-            }
-            // Cambia al siguiente modelo
-            if (currentModel === deloreanModel) {
-                currentModel = mcqueenModel;
-                objectToFollow = currentModel;
-            } else {
-                currentModel = deloreanModel;
-                objectToFollow = currentModel;
-            }
-            // Restaura la posición guardada del modelo anterior
-            currentModel.position.copy(currentPosition);
-            currentModel.position.y = 110;
-            // Hace visible el nuevo modelo
-            currentModel.visible = true;
         }
     });
 
